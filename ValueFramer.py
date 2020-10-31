@@ -1,7 +1,8 @@
-import rnribeiro as rr
+import tkinter as tk
+from tkinter import messagebox
 
 #Main window
-window = rr.tk.Tk()
+window = tk.Tk()
 window.title('Enquadrador de valores')
 window.geometry('1050x450')
 
@@ -27,10 +28,10 @@ def next_value():
                 if int(values_input.get()) < 0 or int(values_input.get()) > 100:
                         raise Exception                                                
         except:
-                rr.messagebox.showinfo("ERRO!", "Insira um número inteiro entre 0 e 100!")
-                proceed = rr.messagebox.askyesno("ERRO!", "Pretende continuar?")                             
+                messagebox.showinfo("ERRO!", "Insira um número inteiro entre 0 e 100!")
+                proceed = messagebox.askyesno("ERRO!", "Pretende continuar?")                             
                 if proceed == True:
-                        values_input.delete(0, rr.tk.END)
+                        values_input.delete(0, tk.END)
                         values_input.insert(0,'')
                         numbers_window.lift()
                         return
@@ -56,7 +57,7 @@ def next_value():
                 numbers_window.destroy()
                 
         else:
-                values_input.delete(0, rr.tk.END)
+                values_input.delete(0, tk.END)
                 values_input.insert(0,'')
 
 #Opens input numbers window
@@ -84,10 +85,10 @@ def check_button_click():
                 numberofvalues = int(numberofvalues_input.get())
                 if numberofvalues <= 0:  raise Exception                        
         except: 
-                rr.messagebox.showinfo("ERRO!", "Insira um número inteiro positivo!")
-                proceed = rr.messagebox.askyesno("ERRO!", "Pretende continuar?")                             
+                messagebox.showinfo("ERRO!", "Insira um número inteiro positivo!")
+                proceed = messagebox.askyesno("ERRO!", "Pretende continuar?")                             
                 if proceed == True:
-                        numberofvalues_input.delete(0, rr.tk.END)
+                        numberofvalues_input.delete(0, tk.END)
                         numberofvalues_input.insert(0,'')
                         return
                 else:
@@ -95,23 +96,23 @@ def check_button_click():
         
         
         #Input numbers window and widgets
-        numbers_window = rr.tk.Tk()
+        numbers_window = tk.Tk()
         numbers_window.title('Enquadrador de valores')
         numbers_window.geometry('400x100')
 
-        label = rr.tk.Label(numbers_window, 
+        label = tk.Label(numbers_window, 
                         text = 'Digite o valor a enquadrar: ',
                         font = ('Arial' , 13)
                         )
         label.place(relx=0.03, rely=.4, anchor="w")
 
-        values_input = rr.tk.Entry(numbers_window,
+        values_input = tk.Entry(numbers_window,
                                         width = 10,
                                         font = ('Arial', 13)
                                         )
         values_input.place(relx=0.6, rely=.4, anchor="w")
 
-        bt = rr.tk.Button(numbers_window,
+        bt = tk.Button(numbers_window,
                 command = next_value,
                 text= 'Próximo valor'
                 )
@@ -119,7 +120,7 @@ def check_button_click():
         
 
 #Title Label
-title_label = rr.tk.Label(window, 
+title_label = tk.Label(window, 
                         text ='Enquadrador de valores',
                         font = ('Arial' , 20),
                         fg = "#ff0000"
@@ -128,7 +129,7 @@ title_label.place(x = 40, y = 25)
 
 
 #Type in number of numbers label
-numberofvalues_label = rr.tk.Label(window,
+numberofvalues_label = tk.Label(window,
                                 text = 'Digite o números de valores que pretende enquadrar:',
                                 font = ('Arial' , 14)
                                 )
@@ -136,35 +137,36 @@ numberofvalues_label.place(x = 55, y= 100)
 
 #Number of values input box
 global numberofvalues_input
-numberofvalues_input = rr.tk.Entry(window,
+numberofvalues_input = tk.Entry(window,
                                 width = 10,
                                 font = ('Arial', 13)
                                 )
 numberofvalues_input.place(x = 520, y = 100, height = 30, width = 110)
 
 #Check button
-check_button = rr.tk.Button(window,
+check_button = tk.Button(window,
+                        text = "OK",
                         command = check_button_click
                         )
 check_button.place(x = 650, y = 93, height = 42, width = 42)
 
 #Result labels   
-_0_25_label = rr.tk.Label(window,
+_0_25_label = tk.Label(window,
                 text = "O número de valores inseridos na classe [0-25] é ... que corresponde a: ... % do total de números inseridos.",
                 font = (15)
                 )
 _0_25_label.place(x = 50, y = 200)
-_25_50_label= rr.tk.Label(window,
+_25_50_label= tk.Label(window,
                 text = "O número de valores inseridos na classe ]25-50] é ... que corresponde a: ... % do total de números inseridos.",
                 font = (15)
                 )
 _25_50_label.place(x = 50, y = 250)
-_50_75_label = rr.tk.Label(window,
+_50_75_label = tk.Label(window,
                 text = "O número de valores inseridos na classe ]50-75] é ... que corresponde a: ... % do total de números inseridos.",
                 font = (15)
                 )
 _50_75_label.place(x = 50, y = 300)
-_75_100_label =rr.tk.Label(window,
+_75_100_label =tk.Label(window,
                 text = "O número de valores inseridos na classe ]75-100] é ... que corresponde a: ... % do total de números inseridos.",
                 font = (15)
                 )
